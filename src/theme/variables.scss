@@ -34,11 +34,12 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #3179ff,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  ecudevs: #00318b
 );
 
 
@@ -60,8 +61,8 @@ $colors: (
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-
-
+$toolbar-background:#00318b;
+$background-color: #3179ff;
 
 // App Theme
 // --------------------------------------------------

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{titulo}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>  
+    <ion-card-header text-center class="titulo-carta">
+      {{model.hora}}
+    </ion-card-header>  
+    <ion-card-content text-center>
+      {{model.descripcion}}
+      <p text-center class="titulo-carta">
+        <ion-icon name="checkmark"></ion-icon>
+      </p>
+    </ion-card-content>  
+  </ion-card>
+</ion-content>

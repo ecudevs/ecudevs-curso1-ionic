@@ -8,27 +8,42 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TodoProvider } from '../providers/todo/todo';
+import { GlobalConfigProvider } from '../providers/global-config/global-config';
+import { HttpModule } from '@angular/http';
+import { ToDoPage } from '../pages/to-do/to-do';
+import { DetallePage } from '../pages/detalle/detalle';
+import { TodoFormPage } from '../pages/todo-form/todo-form';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ToDoPage,
+    DetallePage,
+    TodoFormPage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ToDoPage,
+    DetallePage,
+    TodoFormPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TodoProvider,
+    GlobalConfigProvider
   ]
 })
 export class AppModule {}
