@@ -15,6 +15,10 @@ import { ToDoPage } from '../pages/to-do/to-do';
 import { DetallePage } from '../pages/detalle/detalle';
 import { TodoFormPage } from '../pages/todo-form/todo-form';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { LocalStorageProvider } from '../providers/local-storage/local-storage';
+import { MapasPage } from '../pages/mapas/mapas';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -22,12 +26,14 @@ import { TodoFormPage } from '../pages/todo-form/todo-form';
     ListPage,
     ToDoPage,
     DetallePage,
-    TodoFormPage
+    TodoFormPage,
+    MapasPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,14 +42,16 @@ import { TodoFormPage } from '../pages/todo-form/todo-form';
     ListPage,
     ToDoPage,
     DetallePage,
-    TodoFormPage
+    TodoFormPage,
+    MapasPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TodoProvider,
-    GlobalConfigProvider
+    GlobalConfigProvider,
+    LocalStorageProvider
   ]
 })
 export class AppModule {}

@@ -8,14 +8,14 @@ import { TodoProvider } from '../../providers/todo/todo';
 })
 export class TodoFormPage {
 
-  model: any ={};
+  model: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private todoProvider: TodoProvider,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private alertCtrl: AlertController) {
-      this.model = this.navParams.data.datos;
+    this.model = this.navParams.data.datos;
   }
 
   ionViewDidLoad() {
@@ -24,7 +24,7 @@ export class TodoFormPage {
 
   agregar() {
 
-    if(this.model._id){
+    if (this.model._id) {
       this.presentConfirm();
       return;
     }
@@ -32,7 +32,7 @@ export class TodoFormPage {
     this.guardar();
   }
 
-  guardar(){
+  guardar() {
     let loading = this.loadingCtrl.create({
       content: 'Espere por favor...'
     });
@@ -89,23 +89,23 @@ export class TodoFormPage {
   }
 
   presentConfirm() {
-  let alert = this.alertCtrl.create({
-    title: 'Conformacion',
-    message: 'Esta seguro de modificar el registro?',
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel'        
-      },
-      {
-        text: 'Si',
-        handler: () => {
-          this.actualizar();
+    let alert = this.alertCtrl.create({
+      title: 'Conformacion',
+      message: 'Esta seguro de modificar el registro?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            this.actualizar();
+          }
         }
-      }
-    ]
-  });
-  alert.present();
-}
+      ]
+    });
+    alert.present();
+  }
 
 }

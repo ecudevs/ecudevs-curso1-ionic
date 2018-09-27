@@ -4,6 +4,7 @@ import { TodoProvider } from '../../providers/todo/todo';
 import { HomePage } from '../home/home';
 import { TodoFormPage } from '../todo-form/todo-form';
 import { DetallePage } from '../detalle/detalle';
+import { LocalStorageProvider } from '../../providers/local-storage/local-storage';
 
 @Component({
   selector: 'page-to-do',
@@ -11,19 +12,20 @@ import { DetallePage } from '../detalle/detalle';
 })
 export class ToDoPage {
 
-  toDos=[];
+  toDos = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private todoProvider: TodoProvider,
-    private actionSheetCtrl: ActionSheetController) {
+    private actionSheetCtrl: ActionSheetController,
+    private localstorage: LocalStorageProvider) {
   }
 
   ionViewDidLoad() {
     this.getToDos();
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.getToDos();
   }
 
@@ -33,37 +35,38 @@ export class ToDoPage {
     this.todoProvider.get()
       .subscribe(response => {
         this.toDos = response;
-        // if (this.idTodo) {
-        //   // EN CASO DE QUE TENGAMOS UN PARAMETRO POR URL FILTRAMOS NUESTRO ARRAY
-        //   this.toDos = this.toDos.filter(x => x.id === this.idTodo);
-        // }
-        if(refresher){
-          refresher.complete();
-        }
-      }, error => {
-        console.log(error);
         if (refresher) {
           refresher.complete();
         }
+      }, error => {
+        if (refresher) {
+          refresher.complete();
+        }
+        
+        this.localstorage.getTodo().then(todos => {
+          this.toDos = todos;
+        }).catch(error => {
+          console.log(error);
+        })
       });
   }
 
-  itemSelected(item_todo){
+  itemSelected(item_todo) {
     this.navCtrl.push(HomePage, item_todo);
   }
 
-  insertar(){
+  insertar() {
     this.navCtrl.push(TodoFormPage);
   }
 
-  presentarAction(model){
+  presentarAction(model) {
     const actionSheet = this.actionSheetCtrl.create({
       title: 'Elige una accion',
       buttons: [
         {
           text: 'Ver detalles',
           handler: () => {
-            this.navCtrl.push(DetallePage, {datos: model, titulo: 'Detalles'});
+            this.navCtrl.push(DetallePage, { datos: model, titulo: 'Detalles' });
           }
         }, {
           text: 'Modificar',

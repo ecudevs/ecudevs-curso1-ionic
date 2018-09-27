@@ -7,7 +7,7 @@ export class GlobalConfigProvider {
   }
 
   getUrlBase(){
-    return 'http://localhost:9000';
+    return 'https://todo-ecudeves1.herokuapp.com';
   }
 
 }
