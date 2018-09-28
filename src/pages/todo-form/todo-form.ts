@@ -19,7 +19,6 @@ export class TodoFormPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TodoFormPage');
   }
 
   agregar() {

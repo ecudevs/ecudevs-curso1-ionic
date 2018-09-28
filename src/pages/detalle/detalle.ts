@@ -11,12 +11,12 @@ export class DetallePage {
   titulo: '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // CON navParams.data LLEGAN LOS PARAMETROS DESDE LA VISTA ANTERIOR
     this.model = this.navParams.data.datos;
     this.titulo = this.navParams.data.titulo;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetallePage');
   }
 
 }

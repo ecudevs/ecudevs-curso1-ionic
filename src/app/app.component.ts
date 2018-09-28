@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { ToDoPage } from '../pages/to-do/to-do';
 import { MapasPage } from '../pages/mapas/mapas';
 
@@ -21,7 +20,8 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
+    // PARA NUESTRO TEMPLATE SIDEBAR
+    // AQUI ES DONDE CONFIGURAMOS EL MENU
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'To do', component: ToDoPage },

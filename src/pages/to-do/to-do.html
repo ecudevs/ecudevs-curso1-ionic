@@ -8,6 +8,7 @@
   <ion-refresher (ionRefresh)="getToDos($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <!-- ENLISTAMOS TODAS LAS TAREAS -->
   <ion-list inset>
     <button ion-item *ngFor="let item of toDos" (click)="presentarAction(item)">
       {{ item.descripcion }}

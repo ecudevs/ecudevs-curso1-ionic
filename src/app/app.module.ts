@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,11 +18,12 @@ import { IonicStorageModule } from '@ionic/storage';
 import { LocalStorageProvider } from '../providers/local-storage/local-storage';
 import { MapasPage } from '../pages/mapas/mapas';
 
+import { Geolocation } from '@ionic-native/geolocation';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     ToDoPage,
     DetallePage,
     TodoFormPage,
@@ -33,13 +33,13 @@ import { MapasPage } from '../pages/mapas/mapas';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    //NO OLVIDAR DECLARAR EL MODULO DE STORAGE
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     ToDoPage,
     DetallePage,
     TodoFormPage,
@@ -51,7 +51,8 @@ import { MapasPage } from '../pages/mapas/mapas';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TodoProvider,
     GlobalConfigProvider,
-    LocalStorageProvider
+    LocalStorageProvider,
+    Geolocation
   ]
 })
 export class AppModule {}
